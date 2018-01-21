@@ -22,4 +22,5 @@ variables.js
 
 client/_dist/css
 client/_dist/fonts
-client/_dist/js
+client/_dist/main.min.*
+client/_dist/index.html

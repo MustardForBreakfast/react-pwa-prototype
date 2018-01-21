@@ -2,6 +2,7 @@
 
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   context: __dirname + "/client/src/js",
@@ -18,11 +19,14 @@ module.exports = {
   },
   output: {
     filename: "[name].min.js",
-    path: path.resolve(__dirname, '../client/_dist/js'),
+    path: path.resolve(__dirname, '../client/_dist'),
   },
   plugins: [
-    new ExtractTextPlugin({ filename: "../css/[name].css" }),
-    // new webpack.optimize.ModuleConcatenationPlugin(), //THIS IS FOR 3.0
+    new ExtractTextPlugin({ filename: "/css/[name].css" }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../client/src/index.html'),
+      inject: 'body',
+    }),
   ],
   module: {
     rules: [
@@ -57,14 +61,14 @@ module.exports = {
         test: /\.(png|jpg|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '../images/[name].[ext]',
+          name: '/images/[name].[ext]',
         }
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          name: '../fonts/[name].[ext]',
+          name: '/fonts/[name].[ext]',
         },
       },
     ]
