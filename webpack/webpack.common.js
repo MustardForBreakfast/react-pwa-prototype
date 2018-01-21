@@ -3,6 +3,8 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// TODO: move to prod only?
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
   context: __dirname + "/client/src/js",
@@ -27,6 +29,16 @@ module.exports = {
       template: path.resolve(__dirname, '../client/src/index.html'),
       inject: 'body',
     }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'pwa-prototype',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        navigateFallback: '/index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }
+    ),
   ],
   module: {
     rules: [

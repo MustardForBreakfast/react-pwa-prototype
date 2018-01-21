@@ -24,3 +24,4 @@ client/_dist/css
 client/_dist/fonts
 client/_dist/main.min.*
 client/_dist/index.html
+client/_dist/service-worker.js
