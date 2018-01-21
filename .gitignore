@@ -19,3 +19,7 @@ variables.js
 
 # os garbage
 *.DS_Store
+
+client/_dist/css
+client/_dist/fonts
+client/_dist/js
