@@ -1,0 +1,15 @@
+{
+  "verbose": true,
+  "ignore": [
+      "README.md", 
+      "client/*", 
+      "logs/*", 
+      "nginx/*",
+      "scripts/*", 
+      "seeders/*", 
+      "server/dist/*.zip", 
+      "server/dist/*.tmp", 
+      "test/*", 
+      "upload_*"
+  ]
+}
