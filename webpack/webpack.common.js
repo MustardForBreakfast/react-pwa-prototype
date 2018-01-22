@@ -1,10 +1,9 @@
 'use strict'
 
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// TODO: move to prod only?
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSCSS = new ExtractTextPlugin({ filename: "/css/[name].css" });
 const extractCSS = new ExtractTextPlugin({ filename: "/css/vendor.css" })
