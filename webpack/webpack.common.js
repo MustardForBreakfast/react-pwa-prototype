@@ -34,7 +34,7 @@ module.exports = {
         cacheId: 'pwa-prototype',
         dontCacheBustUrlsMatching: /\.\w{8}\./,
         filename: 'service-worker.js',
-        minify: true,
+        minify: false, // So we can look inside and learn about this stuff.
         navigateFallback: '/index.html',
         staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
       }
