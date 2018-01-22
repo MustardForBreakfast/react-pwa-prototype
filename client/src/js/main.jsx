@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import '../vendorStyles/bootstrap.min.css';
+// include styles here so webpack can find 'em and bundle 'em up
 import '../scss/main.scss';
+import './vendor.js'; // vendor css imported here.
 
 ReactDOM.render(
   (<App />),
