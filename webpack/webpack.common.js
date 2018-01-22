@@ -6,6 +6,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // TODO: move to prod only?
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
+const extractSCSS = new ExtractTextPlugin({ filename: "/css/[name].css" });
+const extractCSS = new ExtractTextPlugin({ filename: "/css/vendor.css" })
+
 module.exports = {
   context: __dirname + "/client/src/js",
   devtool: 'cheap-module-source-map',
@@ -24,7 +27,8 @@ module.exports = {
     path: path.resolve(__dirname, '../client/_dist'),
   },
   plugins: [
-    new ExtractTextPlugin({ filename: "/css/[name].css" }),
+    extractSCSS,
+    extractCSS,
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../client/src/index.html'),
       inject: 'body',
@@ -50,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        use: extractSCSS.extract({
           use: [{
             loader: 'css-loader',
             options: {
@@ -82,6 +86,13 @@ module.exports = {
         options: {
           name: '/fonts/[name].[ext]',
         },
+      },
+      {
+        test: /\.css$/,
+        use: extractCSS.extract({
+          fallback: "style-loader",
+          use: 'css-loader',
+        })
       },
     ]
   },
